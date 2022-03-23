@@ -3,7 +3,6 @@ from pathlib import Path
 
 import boto3
 from peewee import PostgresqlDatabase
-
 from vaultclient.client import VaultClient
 
 sm_client = boto3.client("secretsmanager")
