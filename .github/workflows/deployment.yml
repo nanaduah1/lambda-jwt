@@ -1,0 +1,25 @@
+name: Deploy App
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Build and test
+    branches: 
+      - raw
+    types:
+      - completed
+jobs:
+  deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Dispatch call to private repository
+          uses: peter-evans/repository-dispatch@v1
+          with:
+            token: ${{ secrets.CI_GITHUB_ACCESS_TOKEN }}
+            event-type: deploy-lambda
+            repository: nanaduah1/infra4
+            client-payload: |
+              {
+                "commit": "${GITHUB_SHA::7}",
+                "repository": "${{ github.repository }}"
+              }

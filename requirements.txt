@@ -1,0 +1,3 @@
+aws-psycopg2
+peewee
+git+https://gitlab.com/gabano2005/vault-client.git@master#egg=vault-client&subdirectory=src
