@@ -21,6 +21,8 @@ CONFIG = VaultClient(
     env=ENVIRONMENT,
 )
 
+SECRET_KEY = CONFIG.get("SECRET_KEY", "X56326Gt-gshag0-9Bx21sw-8Tgsa7565")
+
 
 def initialize_db():
 
